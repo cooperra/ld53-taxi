@@ -9,10 +9,15 @@ public class EnemyCarLogic : MonoBehaviour
     //Car Obstacle is set to speed 5
     [SerializeField] private float speed;
     [SerializeField] private float destroyTime;
-    
+
     private void Update()
     {
-        transform.Translate(Vector2.up * -speed * Time.deltaTime);
-        Destroy(this.gameObject, destroyTime);
+        if (GameManager.instance.Conditions == Conditions.start || GameManager.instance.Conditions == Conditions.finish)
+        {
+
+
+            transform.Translate(Vector2.up * -speed * Time.deltaTime);
+            Destroy(this.gameObject, destroyTime);
+        }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public enum Conditions
 {
+    finish,
     win,
     lose,
     start,
@@ -12,6 +13,9 @@ public enum Conditions
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private float time = 2;
+    private float seconds;
+    private float minutes;
     public static GameManager instance;
     /*
      * This manages start, win, conditions
@@ -29,10 +33,26 @@ public class GameManager : MonoBehaviour
         get { return condition; }
         set { condition = value; }
     }
-    private void Start()
+
+    private void Timer()
+    {
+        seconds += 1 * Time.deltaTime;
+        
+        if(seconds > 60)
+        {
+            seconds = 0;
+            minutes += 1;
+            Debug.Log(minutes);
+        }
+        if(minutes == time)
+        {
+            condition = Conditions.finish;
+        }
+    }
+    private void Awake()
     {
        
-        if (this.gameObject != null && this != null)
+        if (instance != this && instance != null)
         {
          Destroy(this);
            
@@ -41,19 +61,22 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-       
-        
+        StartGame();
+
     }
 
-    public void Exit()
+    private void Exit()
     {
         if (condition == Conditions.exit)
         {
 
             Application.Quit();
         }
+       
+            return;
+        
     }
-    public void Lose()
+    private void Lose()
     {
         if (condition == Conditions.lose)
         {
@@ -83,6 +106,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        condition = Conditions.start;
         Scene currentLevel = SceneManager.GetActiveScene();
         if (condition == Conditions.start)
         {
@@ -92,5 +116,14 @@ public class GameManager : MonoBehaviour
             }
         }
         return;
+    }
+   
+    private void Update()
+    {
+        Timer();
+        Exit();
+        Lose();
+        
+    
     }
 }

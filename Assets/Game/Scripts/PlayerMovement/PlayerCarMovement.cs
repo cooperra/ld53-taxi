@@ -7,7 +7,7 @@ public class PlayerCarMovement : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private float speed;
     //Set this value to 4.5
-    private float boundary = 4.5f;
+    private readonly float boundary = 4.5f;
 
     #region PlayerInput plus speed;
     private float Forward()
@@ -47,6 +47,7 @@ public class PlayerCarMovement : MonoBehaviour
     private void OnDestroy()
     {
         //explode!!
+        
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -68,12 +69,20 @@ public class PlayerCarMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
+    private void Update()
+    {
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            GameManager.instance.Conditions = Conditions.exit;
+        }
+    }
     private void FixedUpdate()
     {
         //Todo: Add Reference to game manager win lose 
-
-        MoveCar();
+        if (GameManager.instance.Conditions == Conditions.start || GameManager.instance.Conditions == Conditions.finish)
+        {
+            MoveCar();
+        }
     }
 
 

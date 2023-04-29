@@ -60,7 +60,10 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        SpawnObstacle();
-        SpawnCar();
+        if (GameManager.instance.Conditions == Conditions.start || GameManager.instance.Conditions == Conditions.finish)
+        {
+            SpawnObstacle();
+            SpawnCar();
+        }
     }
 }
