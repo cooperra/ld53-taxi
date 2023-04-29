@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carSpawnTime: 150
-  obstacleSpawnTime: 600
+  obstacleSpawnTime: 1000
   car: {fileID: 6685314705735877979, guid: 8c241f55353a53e4a9cca776983b114d, type: 3}
   obstacle: {fileID: 8698431126851291342, guid: 76c663be04146e8499e0a65d098dc5b6, type: 3}
 --- !u!4 &1321438599
@@ -706,7 +706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carSpawnTime: 300
-  obstacleSpawnTime: 600
+  obstacleSpawnTime: 800
   car: {fileID: 6685314705735877979, guid: 8c241f55353a53e4a9cca776983b114d, type: 3}
   obstacle: {fileID: 8698431126851291342, guid: 76c663be04146e8499e0a65d098dc5b6, type: 3}
 --- !u!4 &1493689263
