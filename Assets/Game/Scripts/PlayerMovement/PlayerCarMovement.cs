@@ -37,6 +37,9 @@ public class PlayerCarMovement : MonoBehaviour
             fwd.y = 0;
             fwd.y += speed * Time.deltaTime;
         }
+        
+        
+        
         Vector3 changeInPos = (fwd + (Vector3.right * Right()));
         
         return changeInPos;
