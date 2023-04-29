@@ -28,26 +28,32 @@ public class Spawner : MonoBehaviour
         {
             Vector3 pos = transform.position;
             pos.x += Random.Range(-obstacleOffset, obstacleOffset);
-            carT = Random.Range( carSpawnTime,carRandom);
-            Instantiate(car, pos, Quaternion.identity);
+            if (pos.x < 3.8f || pos.y > -3.8f)
+            {
+                carT = Random.Range(carSpawnTime, carRandom);
+                Instantiate(car, pos, Quaternion.identity);
+            }
         }
     }
 
     void SpawnObstacle()
     {
-        
-        
+
+
         if (obstacleT > 0)
         {
             obstacleT--;
-           
+
         }
         else
         {
             Vector3 pos = transform.position;
             pos.x += Random.Range(-obstacleOffset, obstacleOffset);
-            obstacleT = Random.Range(obstacleSpawnTime, obstacleRandom);
-            Instantiate(obstacle, pos, Quaternion.identity);
+            if (pos.x < 3.8f || pos.y > -3.8f)
+            {
+                obstacleT = Random.Range(obstacleSpawnTime, obstacleRandom);
+                Instantiate(obstacle, pos, Quaternion.identity);
+            }
         }
     }
 
