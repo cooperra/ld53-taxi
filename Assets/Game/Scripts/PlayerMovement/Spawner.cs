@@ -9,7 +9,10 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float obstacleSpawnTime;
     [SerializeField] private GameObject car;
     [SerializeField] private GameObject obstacle;
-
+    [SerializeField] private float carRandom;
+    [SerializeField] private float obstacleRandom;
+    [SerializeField] private float obstacleOffset;
+    [SerializeField] private float carOffset;
     private float carT;
     private float obstacleT;
 
@@ -23,8 +26,10 @@ public class Spawner : MonoBehaviour
         }
         else
         {
-            carT = carSpawnTime;
-            Instantiate(car, transform.position, Quaternion.identity);
+            Vector3 pos = transform.position;
+            pos.x += Random.Range(-obstacleOffset, obstacleOffset);
+            carT = Random.Range( carSpawnTime,carRandom);
+            Instantiate(car, pos, Quaternion.identity);
         }
     }
 
@@ -39,8 +44,10 @@ public class Spawner : MonoBehaviour
         }
         else
         {
-            obstacleT = obstacleSpawnTime;
-            Instantiate(obstacle, transform.position, Quaternion.identity);
+            Vector3 pos = transform.position;
+            pos.x += Random.Range(-obstacleOffset, obstacleOffset);
+            obstacleT = Random.Range(obstacleSpawnTime, obstacleRandom);
+            Instantiate(obstacle, pos, Quaternion.identity);
         }
     }
 

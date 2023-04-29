@@ -261,7 +261,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.9292555
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -544,6 +544,10 @@ MonoBehaviour:
   obstacleSpawnTime: 600
   car: {fileID: 6685314705735877979, guid: 8c241f55353a53e4a9cca776983b114d, type: 3}
   obstacle: {fileID: 8698431126851291342, guid: 76c663be04146e8499e0a65d098dc5b6, type: 3}
+  carRandom: 1000
+  obstacleRandom: 400
+  obstacleOffset: 3
+  carOffset: 2
 --- !u!1 &1239120486
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,6 +665,10 @@ MonoBehaviour:
   obstacleSpawnTime: 1000
   car: {fileID: 6685314705735877979, guid: 8c241f55353a53e4a9cca776983b114d, type: 3}
   obstacle: {fileID: 8698431126851291342, guid: 76c663be04146e8499e0a65d098dc5b6, type: 3}
+  carRandom: 300
+  obstacleRandom: 500
+  obstacleOffset: 2
+  carOffset: 3
 --- !u!4 &1321438599
 Transform:
   m_ObjectHideFlags: 0
@@ -709,6 +717,10 @@ MonoBehaviour:
   obstacleSpawnTime: 800
   car: {fileID: 6685314705735877979, guid: 8c241f55353a53e4a9cca776983b114d, type: 3}
   obstacle: {fileID: 8698431126851291342, guid: 76c663be04146e8499e0a65d098dc5b6, type: 3}
+  carRandom: 500
+  obstacleRandom: 1000
+  obstacleOffset: 1
+  carOffset: 2
 --- !u!4 &1493689263
 Transform:
   m_ObjectHideFlags: 0
