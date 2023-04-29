@@ -9,6 +9,7 @@ public class EnemyCarLogic : MonoBehaviour
     //Car Obstacle is set to speed 5
     [SerializeField] private float speed;
     [SerializeField] private float destroyTime;
+    
     private void Update()
     {
         transform.Translate(Vector2.up * -speed * Time.deltaTime);
