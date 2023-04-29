@@ -44,12 +44,21 @@ public class PlayerCarMovement : MonoBehaviour
         
         return changeInPos;
     }
+    private void OnDestroy()
+    {
+        //explode!!
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         /*Handle Collisions for Obstacle
          * Car Tag and Obstacle are the same label Obstacle
          * 
          */
+
+        if(collision.gameObject.CompareTag("Obstacle"))
+        {
+           //Decrease Money
+        }
     }
     void MoveCar()
     {

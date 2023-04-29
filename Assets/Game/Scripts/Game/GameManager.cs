@@ -44,6 +44,15 @@ public class GameManager : MonoBehaviour
        
         
     }
+
+    public void Exit()
+    {
+        if (condition == Conditions.exit)
+        {
+
+            Application.Quit();
+        }
+    }
     public void Lose()
     {
         if (condition == Conditions.lose)
