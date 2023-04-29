@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float carSpawnTime;
     [SerializeField] private float obstacleSpawnTime;
     [SerializeField] private GameObject car;
-    [SerializeField] private GameObject obstacle;
+     private GameObject obstacle;
     [SerializeField] private float carRandom;
     [SerializeField] private float obstacleRandom;
     [SerializeField] private float obstacleOffset;
@@ -39,7 +39,7 @@ public class Spawner : MonoBehaviour
 
     void SpawnObstacle()
     {
-        //obstacle = obstacles[(int)Mathf.FloorToInt(Random.Range(0, obstacles.Count - 1))];
+        obstacle = obstacles[(int)Mathf.FloorToInt(Random.Range(0, obstacles.Count))];
 
         if (obstacleT > 0)
         {
