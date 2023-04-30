@@ -10,6 +10,7 @@ public class MoneyUI : MonoBehaviour
     void Start()
     {
         GameManager.instance.MoneyChanged += (money) => { TextComponent.text = "$" + money.ToString(); };
+        TextComponent.text = "$" + GameManager.instance.Money.ToString();
     }
 
     // Update is called once per frame

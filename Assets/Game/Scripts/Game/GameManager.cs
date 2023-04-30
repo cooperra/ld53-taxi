@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
      */
     //Trying to add events maybe?..nah
     private int money;
+    public int startMoney = 250;
     public int Money { get { return money; } set { money = value; MoneyChanged.Invoke(money); } }
     private Conditions condition;
     public Conditions Conditions
@@ -53,7 +54,6 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
-       
         if (instance != this && instance != null)
         {
          Destroy(this);
@@ -108,6 +108,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        Money = startMoney;
         condition = Conditions.start;
         Scene currentLevel = SceneManager.GetActiveScene();
         if (condition == Conditions.start)
