@@ -45,7 +45,7 @@ public class PlayerCarMovement : MonoBehaviour
         return changeInPos;
     }
     
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         /*Handle Collisions for Obstacle
          * Car Tag and Obstacle are the same label Obstacle

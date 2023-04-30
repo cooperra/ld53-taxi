@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoadSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
-    
+    private bool spawnFinish;
     [SerializeField] private float roadTime;
     [SerializeField] private GameObject road;
     [SerializeField] private GameObject finishLine;
@@ -30,6 +30,12 @@ public class RoadSpawner : MonoBehaviour
         }
         if(GameManager.instance.Conditions == Conditions.finish)
         {
+            spawnFinish = true;
+           
+        }
+        if(spawnFinish)
+        {
+            spawnFinish = false;
             Instantiate(finishLine, transform.position, Quaternion.identity);
         }
     }
