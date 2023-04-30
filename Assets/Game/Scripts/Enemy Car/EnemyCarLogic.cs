@@ -20,12 +20,4 @@ public class EnemyCarLogic : MonoBehaviour
             Destroy(this.gameObject, destroyTime);
         }
     }
-    private void OnTriggerEnter(Collider other)
-    {
-       if(other.CompareTag("Player"))
-        {
-           
-        }
-    }
-
 }

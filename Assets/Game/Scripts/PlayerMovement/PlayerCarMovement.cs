@@ -1,27 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerCarMovement : MonoBehaviour
 {
-    [SerializeField] private TMP_Text text;
     private Rigidbody2D rb;
     [SerializeField] private float speed;
-    
     //Set this value to 4.5
     private readonly float boundary = 4.5f;
-
-
-    public int money;
-    private int Money()
-    {
-       
-        
-        money--;
-        return money;
-    }
 
     #region PlayerInput plus speed;
     private float Forward()
@@ -72,10 +58,7 @@ public class PlayerCarMovement : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Obstacle"))
         {
-            int cash = 1;
-            
-            //Decrease Money
-            GameManager.instance.MoneyChanged += (cash) => { text.text = "$" + cash.ToString(); };
+           //Decrease Money
         }
     }
     void MoveCar()
@@ -84,7 +67,6 @@ public class PlayerCarMovement : MonoBehaviour
     }
     private void Start()
     {
-        money = GameManager.instance.startMoney;
         rb = GetComponent<Rigidbody2D>();
     }
     private void Update()
