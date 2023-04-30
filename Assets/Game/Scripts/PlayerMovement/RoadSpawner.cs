@@ -12,8 +12,10 @@ public class RoadSpawner : MonoBehaviour
     public static RoadSpawner instance;
     [SerializeField] private float nextSpawnDist = 0.5f;
     private RoadMotion mostRecentRoad;
+    [SerializeField] private float destroyDist = 15f;
 
     public float RoadSpeed { get => roadSpeed; set => roadSpeed = value; }
+    public float DestroyDist { get => destroyDist; set => destroyDist = value; }
 
     void SpawnRoad()
     {

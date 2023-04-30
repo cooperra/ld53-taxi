@@ -25,9 +25,10 @@ public class RoadMotion : MonoBehaviour
         if (GameManager.instance.Conditions == Conditions.start || GameManager.instance.Conditions == Conditions.finish)
         {
             float speed = RoadSpawner.instance.RoadSpeed;
+            float destroyDist = RoadSpawner.instance.DestroyDist;
             transform.Translate(Vector2.up * -speed * Time.deltaTime);
             // Destroy once off the bottom of the screen (a specific distance from the spawner)
-            if (transform.position.y < RoadSpawner.instance.transform.position.y - DESTROYDIST)
+            if (transform.position.y < RoadSpawner.instance.transform.position.y - destroyDist)
             {
                 Destroy(this.gameObject, 0.0f);
             }
