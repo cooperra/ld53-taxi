@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     //Trying to add events maybe?..nah
     private int money;
     public int startMoney = 250;
-    public int Money { get { return money; } set { money = value; MoneyChanged.Invoke(money); } }
+    public int Money { get { return money; } set { money = value; MoneyChanged?.Invoke(money); } }
     private Conditions condition;
     public Conditions Conditions
     {
