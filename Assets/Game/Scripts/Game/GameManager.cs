@@ -13,6 +13,7 @@ public enum Conditions
 
 public class GameManager : MonoBehaviour
 {
+    public System.Action<int> MoneyChanged;
     [SerializeField] private float time = 2;
     private float seconds;
     private float minutes;
@@ -26,7 +27,8 @@ public class GameManager : MonoBehaviour
      * Game Ends at 2 minutes FinishLine Appears a few seconds after the finish line is crossed the car Explodes!!!
      */
     //Trying to add events maybe?..nah
-    public int money;
+    private int money;
+    public int Money { get { return money; } set { money = value; MoneyChanged.Invoke(money); } }
     private Conditions condition;
     public Conditions Conditions
     {
