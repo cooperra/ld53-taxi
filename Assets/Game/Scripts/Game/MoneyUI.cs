@@ -9,6 +9,8 @@ public class MoneyUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        float money = 10;
+
         GameManager.instance.MoneyChanged += (money) => { TextComponent.text = "$" + money.ToString(); };
     }
 
