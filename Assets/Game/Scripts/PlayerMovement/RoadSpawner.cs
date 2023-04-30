@@ -6,27 +6,33 @@ public class RoadSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
     private bool spawnFinish;
-    [SerializeField] private float roadTime;
+    [SerializeField] private float roadSpeed;
     [SerializeField] private GameObject road;
     [SerializeField] private GameObject finishLine;
-    private float roadT;
+    public static RoadSpawner instance;
+    private readonly int NEXTSPAWNDIST = 100;
+    private RoadMotion mostRecentRoad;
+
+    public float RoadSpeed { get => roadSpeed; set => roadSpeed = value; }
+
     void SpawnRoad()
     {
 
-        if (roadT > 0)
-        {
-            roadT--;
-
-        }
-        else
+        if (mostRecentRoad == null)
         {
             Vector3 pos = transform.position;
-            //pos.y -= road.transform.localScale.y * 0.05f;
-            
-           
-            roadT = roadTime;
-            Instantiate(road, pos, Quaternion.identity);
-            
+            GameObject obj = Instantiate(road, pos, Quaternion.identity);
+            RoadMotion roadInst = obj.GetComponent<RoadMotion>();
+
+            mostRecentRoad = roadInst;
+
+        } else if (mostRecentRoad.transform.position.y > transform.position.y + NEXTSPAWNDIST) {
+            Vector3 pos = mostRecentRoad.transform.position;
+            pos.y -= mostRecentRoad.Height();
+            GameObject obj = Instantiate(road, pos, Quaternion.identity);
+            RoadMotion roadInst = obj.GetComponent<RoadMotion>();
+
+            mostRecentRoad = roadInst;
         }
         if(GameManager.instance.Conditions == Conditions.finish)
         {
