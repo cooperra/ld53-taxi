@@ -31,6 +31,8 @@ public class RoadSpawner : MonoBehaviour
         } else if (mostRecentRoad.transform.position.y < transform.position.y - nextSpawnDist) {
             Vector3 pos = mostRecentRoad.transform.position;
             pos.y += mostRecentRoad.Height();
+            // Shift down just a little to hide the pixel-wide seam
+            pos.y -= 0.05f;
             GameObject obj = Instantiate(road, pos, Quaternion.identity);
             RoadMotion roadInst = obj.GetComponent<RoadMotion>();
 
