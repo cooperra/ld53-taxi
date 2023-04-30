@@ -44,11 +44,7 @@ public class PlayerCarMovement : MonoBehaviour
         
         return changeInPos;
     }
-    private void OnDestroy()
-    {
-        //explode!!
-        
-    }
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         /*Handle Collisions for Obstacle
@@ -58,10 +54,10 @@ public class PlayerCarMovement : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Obstacle"))
         {
-            int penalty = 1;
+            int penalty = -1;
 
             //Decrease Money
-            GameManager.instance.Money -= penalty;
+            GameManager.instance.Money += penalty;
         }
     }
     void MoveCar()
@@ -85,6 +81,11 @@ public class PlayerCarMovement : MonoBehaviour
         if (GameManager.instance.Conditions == Conditions.start || GameManager.instance.Conditions == Conditions.finish)
         {
             MoveCar();
+        }
+        if(GameManager.instance.Conditions == Conditions.win)
+        {
+            this.gameObject.SetActive(false);
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 

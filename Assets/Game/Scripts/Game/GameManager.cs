@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 public enum Conditions
 {
     finish,
@@ -14,6 +15,7 @@ public enum Conditions
 public class GameManager : MonoBehaviour
 {
     public System.Action<int> MoneyChanged;
+    [SerializeField] private TMP_Text timeText;
     [SerializeField] private float time = 2;
     private float seconds;
     private float minutes;
@@ -40,7 +42,7 @@ public class GameManager : MonoBehaviour
     private void Timer()
     {
         seconds += 1 * Time.deltaTime;
-        
+       
         if(seconds > 60)
         {
             seconds = 0;
@@ -51,9 +53,16 @@ public class GameManager : MonoBehaviour
         {
             condition = Conditions.finish;
         }
+        if(minutes == 2 && seconds == 15)
+        {
+            condition = Conditions.win;
+        }
+        timeText.text = minutes.ToString() + ":" + seconds.ToString();
     }
     private void Awake()
     {
+
+        condition = Conditions.start;
         if (instance != this && instance != null)
         {
          Destroy(this);
