@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 {
     public System.Action<int> MoneyChanged;
     [SerializeField] private TMP_Text timeText;
+    [SerializeField] private TMP_Text gameoverTxt;
     [SerializeField] private float time = 2;
     private float seconds;
     private float minutes;
@@ -102,6 +103,7 @@ public class GameManager : MonoBehaviour
     {
         if (condition == Conditions.lose)
         {
+            gameoverTxt.enabled = true;
             Scene currentLevel = SceneManager.GetActiveScene();
 
             if (currentLevel != SceneManager.GetSceneAt(0))
