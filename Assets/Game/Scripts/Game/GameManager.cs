@@ -57,7 +57,11 @@ public class GameManager : MonoBehaviour
         {
             condition = Conditions.win;
         }
-        timeText.text = minutes.ToString() + ":" + seconds.ToString();
+        string secondsPretty = ((int) seconds).ToString();
+        if (secondsPretty.Length < 2) {
+            secondsPretty = "0" + secondsPretty;
+        }
+        timeText.text = minutes.ToString() + ":" + secondsPretty;
     }
     private void Awake()
     {
