@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class RoadMotion : MonoBehaviour
 {
-    private readonly float DESTROYDIST = 30;
-    private Sprite sprite;
-    private Vector3 startPos;
+    private readonly float DESTROYDIST = 10;
+    private SpriteRenderer sprite;
 
     internal float Height()
     {
@@ -17,8 +16,7 @@ public class RoadMotion : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sprite = GetComponent<Sprite>();
-        startPos = transform.position;
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -28,8 +26,8 @@ public class RoadMotion : MonoBehaviour
         {
             float speed = RoadSpawner.instance.RoadSpeed;
             transform.Translate(Vector2.up * -speed * Time.deltaTime);
-            // Destroy once off the bottom of the screen
-            if (transform.position.y > startPos.y + DESTROYDIST)
+            // Destroy once off the bottom of the screen (a specific distance from the spawner)
+            if (transform.position.y < RoadSpawner.instance.transform.position.y - DESTROYDIST)
             {
                 Destroy(this.gameObject, 0.0f);
             }

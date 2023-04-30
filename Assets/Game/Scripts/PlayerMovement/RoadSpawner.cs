@@ -10,7 +10,7 @@ public class RoadSpawner : MonoBehaviour
     [SerializeField] private GameObject road;
     [SerializeField] private GameObject finishLine;
     public static RoadSpawner instance;
-    private readonly int NEXTSPAWNDIST = 100;
+    [SerializeField] private float nextSpawnDist = 0.5f;
     private RoadMotion mostRecentRoad;
 
     public float RoadSpeed { get => roadSpeed; set => roadSpeed = value; }
@@ -26,9 +26,9 @@ public class RoadSpawner : MonoBehaviour
 
             mostRecentRoad = roadInst;
 
-        } else if (mostRecentRoad.transform.position.y > transform.position.y + NEXTSPAWNDIST) {
+        } else if (mostRecentRoad.transform.position.y < transform.position.y - nextSpawnDist) {
             Vector3 pos = mostRecentRoad.transform.position;
-            pos.y -= mostRecentRoad.Height();
+            pos.y += mostRecentRoad.Height();
             GameObject obj = Instantiate(road, pos, Quaternion.identity);
             RoadMotion roadInst = obj.GetComponent<RoadMotion>();
 
@@ -48,7 +48,7 @@ public class RoadSpawner : MonoBehaviour
 
     void Start()
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame
