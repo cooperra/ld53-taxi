@@ -54,7 +54,7 @@ public class PlayerCarMovement : MonoBehaviour
 
         if(collision.gameObject.CompareTag("Obstacle"))
         {
-            int penalty = -1;
+            int penalty = -20;
 
             //Decrease Money
             GameManager.instance.Money += penalty;
