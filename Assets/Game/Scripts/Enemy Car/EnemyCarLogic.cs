@@ -12,7 +12,7 @@ public class EnemyCarLogic : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.Conditions == Conditions.start || GameManager.instance.Conditions == Conditions.finish)
+        if (GameManager.instance.Conditionnn == Conditions.start || GameManager.instance.Conditionnn == Conditions.finish)
         {
 
 

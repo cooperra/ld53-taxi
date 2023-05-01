@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoadSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
-    private bool spawnFinish;
+    private bool spawnedFinish = false;
     [SerializeField] private float roadSpeed;
     [SerializeField] private GameObject road;
     [SerializeField] private GameObject finishLine;
@@ -38,14 +38,9 @@ public class RoadSpawner : MonoBehaviour
 
             mostRecentRoad = roadInst;
         }
-        if(GameManager.instance.Conditions == Conditions.finish)
+        if(GameManager.instance.Conditionnn == Conditions.finish && !spawnedFinish)
         {
-            spawnFinish = true;
-           
-        }
-        if(spawnFinish)
-        {
-            spawnFinish = false;
+            spawnedFinish = true;
             Instantiate(finishLine, transform.position, Quaternion.identity);
         }
     }
@@ -58,7 +53,7 @@ public class RoadSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameManager.instance.Conditions == Conditions.start || GameManager.instance.Conditions == Conditions.finish)
+        if(GameManager.instance.Conditionnn == Conditions.start || GameManager.instance.Conditionnn == Conditions.finish)
         {
             SpawnRoad();
         }

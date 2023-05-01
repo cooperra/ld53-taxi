@@ -22,7 +22,7 @@ public class RoadMotion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.Conditions == Conditions.start || GameManager.instance.Conditions == Conditions.finish)
+        if (GameManager.instance.Conditionnn == Conditions.start || GameManager.instance.Conditionnn == Conditions.finish)
         {
             float speed = RoadSpawner.instance.RoadSpeed;
             float destroyDist = RoadSpawner.instance.DestroyDist;

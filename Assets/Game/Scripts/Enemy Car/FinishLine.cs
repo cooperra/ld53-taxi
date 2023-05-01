@@ -6,9 +6,9 @@ public class FinishLine : EnemyCarLogic
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.Conditions = Conditions.win;
+            GameManager.instance.Conditionnn = Conditions.win;
         }
     }
 }

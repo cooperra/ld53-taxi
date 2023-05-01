@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
     public System.Action<int> MoneyChanged;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private TMP_Text gameoverTxt;
-    [SerializeField] private float time = 2;
+    [SerializeField] private TMP_Text winTxt;
+    [SerializeField] private float time = 2f;
     private float seconds;
     private float minutes;
     public static GameManager instance;
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour
         } 
     }
     private Conditions condition;
-    public Conditions Conditions
+    public Conditions Conditionnn
     {
         get { return condition; }
         set { condition = value; }
@@ -57,14 +58,14 @@ public class GameManager : MonoBehaviour
             minutes += 1;
             Debug.Log(minutes);
         }
-        if(minutes == time)
+        if(minutes + seconds / 60f >= time)
         {
             condition = Conditions.finish;
         }
-        if(minutes == 2 && seconds == 15)
+        /*if(minutes == 2 && seconds == 15)
         {
             condition = Conditions.win;
-        }
+        }*/
         string secondsPretty = ((int) seconds).ToString();
         if (secondsPretty.Length < 2) {
             secondsPretty = "0" + secondsPretty;
@@ -116,13 +117,14 @@ public class GameManager : MonoBehaviour
         return;
     }
     
-    public void Win(GameObject car)
+    public void Win()//(GameObject car)
     {
         if (condition == Conditions.win)
         {
+            winTxt.enabled= true;
             //Explode Car
 
-            Destroy(car);
+            //Destroy(car);
         
         }
         return;
@@ -145,6 +147,7 @@ public class GameManager : MonoBehaviour
    
     private void Update()
     {
+        Win();
         if (condition != Conditions.lose)
         {
             Timer();

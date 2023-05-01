@@ -72,17 +72,17 @@ public class PlayerCarMovement : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Escape))
         {
-            GameManager.instance.Conditions = Conditions.exit;
+            GameManager.instance.Conditionnn = Conditions.exit;
         }
     }
     private void FixedUpdate()
     {
         //Todo: Add Reference to game manager win lose 
-        if (GameManager.instance.Conditions == Conditions.start || GameManager.instance.Conditions == Conditions.finish)
+        if (GameManager.instance.Conditionnn == Conditions.start || GameManager.instance.Conditionnn == Conditions.finish)
         {
             MoveCar();
         }
-        if(GameManager.instance.Conditions == Conditions.win)
+        if(GameManager.instance.Conditionnn == Conditions.win)
         {
             this.gameObject.SetActive(false);
             this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
